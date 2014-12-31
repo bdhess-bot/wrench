@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SourceAnalyzer Name="Layout Rules">
+  <Description>
+    Rules which enforce Mark's coding best practices.
+  </Description>
+  <Rules>
+    <RuleGroup Name="Whitespace">
+      <Rule Name="NoTrailingWhitespace" CheckId="BS1000">
+        <Context>The last character of a line must not be whitespace.</Context>
+        <Description>Those tabs and spaces add precious bytes.</Description>
+      </Rule>
+      <Rule Name="FileMustEndWithNewline" CheckId="BS1001">
+        <Context>The last line of a source file contain a newline.</Context>
+        <Description>Validates that the file ends with a newline.</Description>
+      </Rule>
+    </RuleGroup>
+    <RuleGroup Name="Readability">
+      <Rule Name="MaximumLineLengthExceeded" CheckId="BS1002">
+        <Context>Line length must not exceed 120 characters.</Context>
+        <Description>Brevity is virtue. Virtue is strength.</Description>
+      </Rule>
+      <Rule Name="DoNotUseVarKeyword" CheckId="BS1003">
+        <Context>Use of the var keyword is disallowed.</Context>
+        <Description>Use the full name of the target class, or 'object' if an anonymous object.</Description>
+      </Rule>
+    </RuleGroup>
+  </Rules>
+</SourceAnalyzer>
