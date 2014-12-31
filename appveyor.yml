@@ -1,4 +1,4 @@
-base_version: 1.0
+base_version: '1.0'
 version: {base_version}.{build}
 
 before_build:
