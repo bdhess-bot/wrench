@@ -1,2 +1,29 @@
+base_version: 1.0
+version: {base_version}.{build}
+
 before_build:
   - nuget restore
+
+platform:
+  - Any CPU
+
+configuration:
+  - Release
+
+assembly_info:
+  patch: true
+  file: Version.cs
+  assembly_version: '{base_version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+
+deploy:
+  release: browningstyle v{version}
+  provider: GitHub
+  auth_token:
+    secure: Rzc/Lpf+X3hUpQhDyqHtELOsVmimpDOEgHkFeCl2KRl0lP5jxwUAftsDMrkmOYyH
+  artifact: /.*BrowningStyle\.dll/
+  draft: false
+  prerelease: false
+  on:
+    branch: master
