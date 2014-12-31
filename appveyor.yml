@@ -1,4 +1,4 @@
-base_version: '1.0'
+base_version: 1.0
 version: {base_version}.{build}
 
 before_build:
@@ -27,3 +27,4 @@ deploy:
   prerelease: false
   on:
     branch: master
+    appveyor_repo_tag: false
