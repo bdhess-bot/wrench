@@ -24,7 +24,7 @@ deploy:
   - provider: GitHub
     auth_token:
       secure: Rzc/Lpf+X3hUpQhDyqHtELOsVmimpDOEgHkFeCl2KRl0lP5jxwUAftsDMrkmOYyH
-    artifact: /.*BrowningStyle\.dll/
+    artifact: /.*\.dll/
     draft: false
     prerelease: false
     on:
