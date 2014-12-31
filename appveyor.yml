@@ -1,30 +1,29 @@
-base_version: 1.0
-version: {base_version}.{build}
+version: 1.0
 
 before_build:
-  - nuget restore
+  nuget restore
 
-platform:
-  - Any CPU
+build:
+  parallel: true
+  project: src/BrowningStyle.sln
+  publish_nuget: true
+  publish_nuget_symbols: true
 
-configuration:
-  - Release
+platform: Any CPU
+configuration: Release
 
 assembly_info:
   patch: true
   file: Version.cs
-  assembly_version: '{base_version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}.{build}'
+  assembly_informational_version: '{version}.{build}'
 
 deploy:
-  release: browningstyle v{version}
-  provider: GitHub
-  auth_token:
-    secure: Rzc/Lpf+X3hUpQhDyqHtELOsVmimpDOEgHkFeCl2KRl0lP5jxwUAftsDMrkmOYyH
-  artifact: /.*BrowningStyle\.dll/
-  draft: false
-  prerelease: false
-  on:
-    branch: master
-    appveyor_repo_tag: false
+  - provider: GitHub
+    artifact: /.*BrowningStyle\.dll/
+    draft: false
+    prerelease: false
+    on:
+      branch: master
+      appveyor_repo_tag: false
