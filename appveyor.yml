@@ -1,5 +1,12 @@
-base_version: 1.0
-version: {base_version}.{build}
+# Update assembly_version below if updating this!
+version: 1.0.{build}
+
+assembly_info:
+  patch: true
+  file: Version.cs
+  assembly_version: '1.0'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
 
 before_build:
   nuget restore src/BrowningStyle.sln
@@ -12,13 +19,6 @@ build:
 
 platform: Any CPU
 configuration: Release
-
-assembly_info:
-  patch: true
-  file: Version.cs
-  assembly_version: '{version}'
-  assembly_file_version: '{version}.{build}'
-  assembly_informational_version: '{version}'
 
 deploy:
   - provider: GitHub
