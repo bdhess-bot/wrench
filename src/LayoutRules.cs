@@ -44,7 +44,7 @@ namespace BrowningStyle
 
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    if (Regex.IsMatch(lines[i], "\\s$"));
+                    if (Regex.IsMatch(lines[i], "\\s$"))
                     {
                         this.AddViolation(document.RootElement, i + 1, "NoTrailingWhitespace");
                     }
