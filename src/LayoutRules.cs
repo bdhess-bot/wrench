@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using StyleCop;
 using StyleCop.CSharp;
 
@@ -11,7 +12,7 @@ namespace BrowningStyle
     /// A <see cref="SourceAnalyzer" /> that applies our custom rules.
     /// </summary>
     [SourceAnalyzer(typeof(CsParser))]
-    public class Rules : SourceAnalyzer
+    public class LayoutRules : SourceAnalyzer
     {
         /// <inheritdoc/>
         public override void AnalyzeDocument(CodeDocument document)
@@ -27,7 +28,7 @@ namespace BrowningStyle
         }
 
         /// <summary>
-        /// Checks the correctness of code text within a given document.
+        /// Checks the correctness of text layout within a given document.
         /// </summary>
         /// <param name="document">The document to process.</param>
         private void CheckLayout(CsDocument document)
@@ -38,19 +39,19 @@ namespace BrowningStyle
 
                 if (!string.IsNullOrEmpty(lines[lines.Length - 1]))
                 {
-                    this.AddViolation(document.RootElement, lines.Length - 1, "FileMustEndWithNewline");
+                    this.AddViolation(document.RootElement, lines.Length, "FileMustEndWithNewline");
                 }
 
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    if ("\\s$".IsMatch(lines[i]))
+                    if (Regex.IsMatch(lines[i], "\\s$"));
                     {
                         this.AddViolation(document.RootElement, i + 1, "NoTrailingWhitespace");
                     }
 
                     if (lines[i].Length > 120)
                     {
-                        this.AddViolation(document.RootElement, i + 1, "MaximumLineLengthExceeded");
+                        this.AddViolation(document.RootElement, i + 1,  "MaximumLineLengthExceeded");
                     }
                 }
             }

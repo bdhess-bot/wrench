@@ -10,7 +10,7 @@
         <Description>Those tabs and spaces add precious bytes.</Description>
       </Rule>
       <Rule Name="FileMustEndWithNewline" CheckId="BS1001">
-        <Context>The last line of a source file contain a newline.</Context>
+        <Context>The last character in a source file must be a newline.</Context>
         <Description>Validates that the file ends with a newline.</Description>
       </Rule>
     </RuleGroup>
