@@ -12,7 +12,8 @@ before_build:
   nuget restore src\BrowningStyle.sln
 
 after_build:
-  nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version=%APPVEYOR_BUILD_VERSION%;configuration=%CONFIGURATION% 
+  nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version=%APPVEYOR_BUILD_VERSION%;configuration=%CONFIGURATION%
+
 
 platform: Any CPU
 configuration: Release
@@ -24,10 +25,10 @@ build:
   project: src\BrowningStyle.sln
 
 artifacts:
- - path: src\bin\$(configuration)\BrowningStyle.dll
-   name: BrowningStyle.dll
- - path: BrowningStyle.MSBuild.$(appveyor_build_version).nupkg
-   name: BrowningStyle.MSBuild.nupkg
+ - path: '**\*.nupkg'
+ - path: '**\BrowningStyle.dll'
+ - path: '**\BrowningStyle.pdb'
+ - path: .
 
 deploy:
   - provider: GitHub
