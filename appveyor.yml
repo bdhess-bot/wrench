@@ -21,9 +21,9 @@ build:
   project: src\BrowningStyle.sln
 
 after_build:
-  nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version=%APPVEYOR_BUILD_VERSION%;configuration=%CONFIGURATION%
-  7z a -o.. BrowningStyle_%APPVEYOR_BUILD_VERSION%_Source.zip src appveyor.yml
-  7z a -o.. BrowningStyle_%APPVEYOR_BUILD_VERSION%_Binaries.zip src\bin\%CONFIGURATION%\BrowningStyle.dll src\bin\%CONFIGURATION%\BrowningStyle.pdb
+  - nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version=%APPVEYOR_BUILD_VERSION%;configuration=%CONFIGURATION%
+  - 7z a -tzip -o.. BrowningStyle_%APPVEYOR_BUILD_VERSION%_Source.zip src appveyor.yml
+  - 7z a -tzip -o.. BrowningStyle_%APPVEYOR_BUILD_VERSION%_Binaries.zip src\bin\%CONFIGURATION%\BrowningStyle.dll src\bin\%CONFIGURATION%\BrowningStyle.pdb
 
 artifacts:
  - path: BrowningStyle.MSBuild*.nupkg
