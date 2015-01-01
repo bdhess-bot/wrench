@@ -92,8 +92,10 @@ namespace BrowningStyle
 
             if (statement.StatementType == StatementType.VariableDeclaration)
             {
-                foreach (CsToken token in statement.Tokens.Where(
-                    x => x.CsTokenType == CsTokenType.Other && x.Text == "var"))
+                foreach (CsToken token in statement.Tokens.Where(x =>
+                    x.CsTokenClass == CsTokenClass.Type &&
+                    x.CsTokenType == CsTokenType.Other && 
+                    x.Text == "var"))
                 {
                     this.AddViolation(parentElement, token.Location, "DoNotUseVarKeyword");
                 }
