@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <SourceAnalyzer Name="Layout Rules">
   <Description>
-    Rules which enforce Mark's coding best practices.
+    Rules which enforce some coding best practices.
   </Description>
   <Rules>
     <RuleGroup Name="Whitespace">
@@ -15,11 +15,11 @@
       </Rule>
     </RuleGroup>
     <RuleGroup Name="Readability">
-      <Rule Name="MaximumLineLengthExceeded" CheckId="BS1002">
+      <Rule Name="MaximumLineLengthExceeded" CheckId="BS1100">
         <Context>Line length must not exceed 120 characters.</Context>
         <Description>Brevity is virtue. Virtue is strength.</Description>
       </Rule>
-      <Rule Name="DoNotUseVarKeyword" CheckId="BS1003">
+      <Rule Name="DoNotUseVarKeyword" CheckId="BS1101">
         <Context>Use of the var keyword is disallowed.</Context>
         <Description>Use the full name of the target class, or 'object' if an anonymous object.</Description>
       </Rule>
