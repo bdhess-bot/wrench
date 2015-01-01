@@ -25,10 +25,16 @@ build:
   project: src\BrowningStyle.sln
 
 artifacts:
- - path: '**\*.nupkg'
- - path: '**\BrowningStyle.dll'
- - path: '**\BrowningStyle.pdb'
- - path: .
+ - path: BrowningStyle.MSBuild*.nupkg
+   name: NuGet Package
+ - path: src\bin\*\BrowningStyle.dll
+   name: Assembly
+ - path: src\bin\*\BrowningStyle.pdb
+   name: Debug Symbols
+ - path: src
+   name: Source
+ - path: appveyor.yml
+   name: Build Script
 
 deploy:
   - provider: GitHub
