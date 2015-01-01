@@ -12,7 +12,7 @@ before_build:
   nuget restore src\BrowningStyle.sln
 
 after_build:
-  nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version={version};configuration=$(configuration)
+  nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version=$(version);configuration=$(configuration)
 
 platform: Any CPU
 configuration: Release
@@ -31,7 +31,7 @@ artifacts:
 
 deploy:
   - provider: GitHub
-    release: browningstyle v{version}
+    release: browningstyle v$(version)
     auth_token:
       #bsbuild 2014-12-31
       secure: Rzc/Lpf+X3hUpQhDyqHtELOsVmimpDOEgHkFeCl2KRl0lP5jxwUAftsDMrkmOYyH
