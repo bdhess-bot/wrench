@@ -38,7 +38,7 @@ deploy:
     auth_token:
       #bsbuild 2014-12-31
       secure: Rzc/Lpf+X3hUpQhDyqHtELOsVmimpDOEgHkFeCl2KRl0lP5jxwUAftsDMrkmOYyH
-    artifact: 'Binaries','NuGet Package'
+    artifact: /.*BrowningStyle.*/
     draft: false
     prerelease: false
     on:
