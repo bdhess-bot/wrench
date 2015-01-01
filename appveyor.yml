@@ -27,14 +27,10 @@ build:
 artifacts:
  - path: BrowningStyle.MSBuild*.nupkg
    name: NuGet Package
- - path: src\bin\*\BrowningStyle.dll
-   name: Assembly
- - path: src\bin\*\BrowningStyle.pdb
-   name: Debug Symbols
- - path: src
+ - path: src\bin\$(configuration)\BrowningStyle.*
+   name: Binaries
+ - path: src,appveyor.yml
    name: Source
- - path: appveyor.yml
-   name: Build Script
 
 deploy:
   - provider: GitHub
@@ -42,7 +38,9 @@ deploy:
     auth_token:
       #bsbuild 2014-12-31
       secure: Rzc/Lpf+X3hUpQhDyqHtELOsVmimpDOEgHkFeCl2KRl0lP5jxwUAftsDMrkmOYyH
-    artifact: /.*BrowningStyle.*/
+    artifact:
+     - Binaries
+     - NuGet Package
     draft: false
     prerelease: false
     on:
