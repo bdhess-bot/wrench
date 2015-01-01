@@ -15,6 +15,9 @@ platform: Any CPU
 configuration: Release
 environment:
   RunCodeAnalysis: true
+  StyleCopTreatErrorsAsWarnings: false
+  TreatWarningsAsErrors: true
+  CodeAnalysisTreatWarningsAsErrors: true
 
 build:
   parallel: true
