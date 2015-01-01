@@ -27,10 +27,12 @@ build:
 artifacts:
  - path: BrowningStyle.MSBuild*.nupkg
    name: NuGet Package
- - path: src\bin\$(configuration)\BrowningStyle.*
+ - path: src\bin\$(configuration)\BrowningStyle.dll,src\bin\$(configuration)\BrowningStyle.pdb
    name: Binaries
+   type: zip
  - path: src,appveyor.yml
    name: Source
+   type: zip
 
 deploy:
   - provider: GitHub
