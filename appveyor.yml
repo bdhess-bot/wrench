@@ -3,7 +3,7 @@ version: 1.0.{build}
 
 assembly_info:
   patch: true
-  file: Version.cs
+  file: src\Properties\AssemblyInfo.cs
   assembly_version: '1.0'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
@@ -12,7 +12,8 @@ before_build:
   nuget restore src\BrowningStyle.sln
 
 after_build:
-  nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version={version};configuration=$(configuration)
+  nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version=%APPVEYOR_BUILD_VERSION%;configuration=%CONFIGURATION%
+
 
 platform: Any CPU
 configuration: Release
@@ -22,20 +23,26 @@ environment:
 build:
   parallel: true
   project: src\BrowningStyle.sln
-  publish_nuget: true
-  publish_nuget_symbols: true
 
 artifacts:
- - path: src\bin\$(configuration)\BrowningStyle.dll
-   name: BrowningStyle.dll
+ - path: BrowningStyle.MSBuild*.nupkg
+   name: NuGet Package
+ - path: src\bin\*\BrowningStyle.dll
+   name: Assembly
+ - path: src\bin\*\BrowningStyle.pdb
+   name: Debug Symbols
+ - path: src
+   name: Source
+ - path: appveyor.yml
+   name: Build Script
 
 deploy:
   - provider: GitHub
-    release: browningstyle v{version}
+    release: browningstyle v$(appveyor_build_version)
     auth_token:
       #bsbuild 2014-12-31
       secure: Rzc/Lpf+X3hUpQhDyqHtELOsVmimpDOEgHkFeCl2KRl0lP5jxwUAftsDMrkmOYyH
-    artifact: /.*\.dll/
+    artifact: /.*BrowningStyle.*/
     draft: false
     prerelease: false
     on:

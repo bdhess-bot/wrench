@@ -21,5 +21,6 @@
   <files>
     <file src="BrowningStyle.MSBuild.props" target="build" />
     <file src="bin\$configuration$\BrowningStyle.dll" target="tools" />
+    <file src="bin\$configuration$\BrowningStyle.pdb" target="tools" />
   </files>
 </package>
