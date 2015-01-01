@@ -22,7 +22,7 @@ build:
 
 after_build:
   - nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version=%APPVEYOR_BUILD_VERSION%;configuration=%CONFIGURATION%
-  - 7z a -tzip BrowningStyle_%APPVEYOR_BUILD_VERSION%_Source.zip src appveyor.yml -xsrc\bin -xsrc\obj
+  - 7z a -tzip BrowningStyle_%APPVEYOR_BUILD_VERSION%_Source.zip src appveyor.yml -x!src\bin -x!src\obj
   - 7z a -tzip BrowningStyle_%APPVEYOR_BUILD_VERSION%_Binaries.zip .\src\bin\%CONFIGURATION%\BrowningStyle.dll .\src\bin\%CONFIGURATION%\BrowningStyle.pdb
 
 artifacts:
