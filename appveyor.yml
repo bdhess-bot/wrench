@@ -12,13 +12,12 @@ before_build:
   nuget restore src\BrowningStyle.sln
 
 after_build:
-  nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version=%appveyor_build_version%;configuration=%configuration%
+  nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version=%APPVEYOR_BUILD_VERSION%;configuration=%CONFIGURATION% 
 
 platform: Any CPU
 configuration: Release
 environment:
   RunCodeAnalysis: true
-  version: 
 
 build:
   parallel: true
