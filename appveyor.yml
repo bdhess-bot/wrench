@@ -22,20 +22,20 @@ build:
 
 after_build:
   - nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version=%APPVEYOR_BUILD_VERSION%;configuration=%CONFIGURATION%
-  - 7z a -tzip BrowningStyle_%APPVEYOR_BUILD_VERSION%_Source.zip src appveyor.yml -x!src\bin -x!src\obj
-  - 7z a -tzip BrowningStyle_%APPVEYOR_BUILD_VERSION%_Binaries.zip .\src\bin\%CONFIGURATION%\BrowningStyle.dll .\src\bin\%CONFIGURATION%\BrowningStyle.pdb
+  - 7z a -tzip BrowningStyle.Source.%APPVEYOR_BUILD_VERSION%.zip src appveyor.yml -x!src\bin -x!src\obj
+  - 7z a -tzip BrowningStyle.Binaries.%APPVEYOR_BUILD_VERSION%.zip .\src\bin\%CONFIGURATION%\BrowningStyle.dll .\src\bin\%CONFIGURATION%\BrowningStyle.pdb
 
 artifacts:
  - path: BrowningStyle.MSBuild*.nupkg
    name: NuGet Package
- - path: BrowningStyle*Binaries.zip
+ - path: BrowningStyle.Binaries*.zip
    name: Binaries
- - path: BrowningStyle*Source.zip
+ - path: BrowningStyle.Source*.zip
    name: Source
 
 deploy:
   - provider: GitHub
-    release: browningstyle v$(appveyor_build_version)
+    release: v$(appveyor_build_version)
     auth_token:
       #bsbuild 2014-12-31
       secure: Rzc/Lpf+X3hUpQhDyqHtELOsVmimpDOEgHkFeCl2KRl0lP5jxwUAftsDMrkmOYyH
