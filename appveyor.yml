@@ -27,7 +27,7 @@ after_build:
 
 artifacts:
  - path: BrowningStyle.MSBuild*.nupkg
-   name: NuGet Package
+   name: NuGet
  - path: BrowningStyle.Binaries*.zip
    name: Binaries
  - path: BrowningStyle.Source*.zip
@@ -39,7 +39,7 @@ deploy:
     auth_token:
       #bsbuild 2014-12-31
       secure: Rzc/Lpf+X3hUpQhDyqHtELOsVmimpDOEgHkFeCl2KRl0lP5jxwUAftsDMrkmOYyH
-    artifact: Binaries,NuGet Package
+    artifact: NuGet,Binaries
     draft: false
     prerelease: false
     on:
