@@ -11,10 +11,6 @@ assembly_info:
 before_build:
   nuget restore src\BrowningStyle.sln
 
-after_build:
-  nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version=%APPVEYOR_BUILD_VERSION%;configuration=%CONFIGURATION%
-
-
 platform: Any CPU
 configuration: Release
 environment:
@@ -24,15 +20,18 @@ build:
   parallel: true
   project: src\BrowningStyle.sln
 
+after_build:
+  nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version=%APPVEYOR_BUILD_VERSION%;configuration=%CONFIGURATION%
+  7z a -tzip -o.. BrowningStyle_%APPVEYOR_BUILD_VERSION%_Source.zip src appveyor.yml
+  7z a -tzip -o.. BrowningStyle_%APPVEYOR_BUILD_VERSION%_Binaries.zip src\bin\%CONFIGURATION%\BrowningStyle.dll src\bin\%CONFIGURATION%\BrowningStyle.pdb
+
 artifacts:
  - path: BrowningStyle.MSBuild*.nupkg
    name: NuGet Package
- - path: src\bin\$(configuration)\BrowningStyle.dll,src\bin\$(configuration)\BrowningStyle.pdb
+ - path: ..\BrowningStyle_$(appveyor_build_version)_Binaries.zip
    name: Binaries
-   type: zip
- - path: src,appveyor.yml
+ - path: ..\BrowningStyle_$(appveyor_build_version)_Source.zip
    name: Source
-   type: zip
 
 deploy:
   - provider: GitHub
