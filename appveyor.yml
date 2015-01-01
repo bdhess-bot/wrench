@@ -22,12 +22,12 @@ environment:
 build:
   parallel: true
   project: src\BrowningStyle.sln
-  publish_nuget: true
-  publish_nuget_symbols: true
 
 artifacts:
  - path: src\bin\$(configuration)\BrowningStyle.dll
    name: BrowningStyle.dll
+ - path: BrowningStyle.MSBuild.$(appveyor_build_version).nupkg
+   name: BrowningStyle.MSBuild.nupkg
 
 deploy:
   - provider: GitHub
@@ -35,7 +35,7 @@ deploy:
     auth_token:
       #bsbuild 2014-12-31
       secure: Rzc/Lpf+X3hUpQhDyqHtELOsVmimpDOEgHkFeCl2KRl0lP5jxwUAftsDMrkmOYyH
-    artifact: /.*\.dll/
+    artifact: /.*BrowningStyle.*/
     draft: false
     prerelease: false
     on:
