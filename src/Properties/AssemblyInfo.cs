@@ -1,9 +1,4 @@
-﻿// <copyright file="AssemblyInfo.cs" company="Brad Hess">
-//   Copyright (c) 2014 Brad Hess, and licensed under the MIT License.
-//   See 'LICENSE' in the repo root for more information.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
