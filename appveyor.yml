@@ -1,7 +1,7 @@
 version: ci-{build}
 
 before_build:
-  - git fetch origin +refs/heads/*:refs/remotes/origin/*
+  - git pull origin +refs/heads/*:refs/remotes/origin/*
   - gitversion . /output buildserver
   - nuget restore BrowningStyle\BrowningStyle.sln
   - 7z a -tzip BrowningStyle.Source.%FullSemVer%.zip BrowningStyle appveyor.yml
