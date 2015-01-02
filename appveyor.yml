@@ -1,5 +1,3 @@
-version: ci-{build}
-
 before_build:
   - git remote set-url origin https://github.com/%APPVEYOR_REPO_NAME%.git
   - gitversion /b %APPVEYOR_REPO_BRANCH% /output buildserver
