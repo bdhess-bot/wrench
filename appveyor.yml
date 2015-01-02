@@ -20,7 +20,7 @@ build:
 
 after_build:
   - nuget pack BrowningStyle\src\BrowningStyle.MSBuild.nuspec -Properties version=%GitVersion_NuGetVersion%;configuration=%CONFIGURATION%
-  - 7z a -tzip BrowningStyle.Binaries.%GitVersion_NuGetVersion%.zip .\BrowningStyle\src\bin\%CONFIGURATION%\BrowningStyle.dll .\BrowningStyle\src\bin\%FullSemVer%\BrowningStyle.pdb
+  - 7z a -tzip BrowningStyle.Binaries.%GitVersion_NuGetVersion%.zip .\BrowningStyle\src\bin\%CONFIGURATION%\BrowningStyle.dll .\BrowningStyle\src\bin\%CONFIGURATION%\BrowningStyle.pdb
 
 artifacts:
  - path: BrowningStyle.MSBuild*.nupkg
