@@ -2,6 +2,7 @@ version: ci-{build}
 
 before_build:
   # get a local copy of master
+  - git checkout develop
   - git pull
   - git checkout master
   - git pull
