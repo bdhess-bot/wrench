@@ -1,7 +1,7 @@
 version: ci-{build}
 
 before_build:
-  - git remote seturl origin https://github.com/%APPVEYOR_REPO_NAME%
+  - git remote set-url origin https://github.com/%APPVEYOR_REPO_NAME%.git
   - gitversion . /output buildserver
   - nuget restore BrowningStyle\BrowningStyle.sln
   - 7z a -tzip BrowningStyle.Source.%NuGetVersion%.zip BrowningStyle appveyor.yml
