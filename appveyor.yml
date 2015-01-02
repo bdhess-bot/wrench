@@ -1,7 +1,7 @@
-version: $(FullSemVer)
+version: {build}-ci+{branch}
 
 before_build:
-  - gitversion .
+  - gitversion . /url https://github.com/bdhess/browningstyle
   - nuget restore BrowningStyle\BrowningStyle.sln
   - 7z a -tzip BrowningStyle.Source.%FullSemVer%.zip BrowningStyle appveyor.yml
 
