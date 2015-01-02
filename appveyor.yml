@@ -1,4 +1,4 @@
-version: %FullSemVer%
+version: $(FullSemVer)
 
 before_build:
   - gitversion .
