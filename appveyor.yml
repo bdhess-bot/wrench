@@ -9,7 +9,8 @@ assembly_info:
   assembly_informational_version: '{version}'
 
 before_build:
-  nuget restore src\BrowningStyle.sln
+  - nuget restore src\BrowningStyle.sln
+  - 7z a -tzip BrowningStyle.Source.%APPVEYOR_BUILD_VERSION%.zip src appveyor.yml
 
 platform: Any CPU
 configuration: Release
@@ -25,7 +26,6 @@ build:
 
 after_build:
   - nuget pack src\BrowningStyle.MSBuild.nuspec -Properties version=%APPVEYOR_BUILD_VERSION%;configuration=%CONFIGURATION%
-  - 7z a -tzip BrowningStyle.Source.%APPVEYOR_BUILD_VERSION%.zip src appveyor.yml -x!src\bin -x!src\obj
   - 7z a -tzip BrowningStyle.Binaries.%APPVEYOR_BUILD_VERSION%.zip .\src\bin\%CONFIGURATION%\BrowningStyle.dll .\src\bin\%CONFIGURATION%\BrowningStyle.pdb
 
 artifacts:
