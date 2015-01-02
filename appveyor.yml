@@ -1,4 +1,4 @@
-version: {build}
+version: {build}-{branch}
 
 before_build:
   - gitversion . /url https://github.com/bdhess/browningstyle
