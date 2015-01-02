@@ -29,8 +29,6 @@ artifacts:
    name: Binaries
  - path: BrowningStyle.Source*.zip
    name: Source
- - path: logs
-   name: Logs
 
 deploy:
   - provider: GitHub
