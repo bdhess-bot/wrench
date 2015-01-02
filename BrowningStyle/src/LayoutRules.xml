@@ -15,10 +15,6 @@
       </Rule>
     </RuleGroup>
     <RuleGroup Name="Readability">
-      <Rule Name="MaximumLineLengthExceeded" CheckId="BS1100">
-        <Context>Line length must not exceed 120 characters.</Context>
-        <Description>Brevity is virtue. Virtue is strength.</Description>
-      </Rule>
       <Rule Name="DoNotUseVarKeyword" CheckId="BS1101">
         <Context>Use of the var keyword is disallowed.</Context>
         <Description>Use the full name of the target class, or 'object' if an anonymous object.</Description>

@@ -48,11 +48,6 @@ namespace BrowningStyle
                     {
                         this.AddViolation(document.RootElement, i + 1, "NoTrailingWhitespace");
                     }
-
-                    if (lines[i].Length > 120)
-                    {
-                        this.AddViolation(document.RootElement, i + 1,  "MaximumLineLengthExceeded");
-                    }
                 }
             }
         }
