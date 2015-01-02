@@ -1,4 +1,4 @@
-version: v{build}
+version: ci-{build}
 
 before_build:
   - gitversion . /url https://github.com/%APPVEYOR_REPO_NAME% /b %APPVEYOR_REPO_BRANCH% /output buildserver
