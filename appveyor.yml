@@ -6,6 +6,7 @@ before_build:
   - git pull
   - git checkout %APPVEYOR_REPO_BRANCH%
   - git checkout -qf %APPVEYOR_REPO_COMMIT%
+  - git remote remove origin
   # now we can run gitversion
   - gitversion . /output buildserver
   - nuget restore BrowningStyle\BrowningStyle.sln
