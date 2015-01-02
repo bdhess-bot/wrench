@@ -1,7 +1,7 @@
 version: v{build}
 
 before_build:
-  - gitversion . /url https://github.com/bdhess/browningstyle
+  - gitversion . /url https://github.com/bdhess/browningstyle /output buildserver
   - nuget restore BrowningStyle\BrowningStyle.sln
   - 7z a -tzip BrowningStyle.Source.%FullSemVer%.zip BrowningStyle appveyor.yml
 
