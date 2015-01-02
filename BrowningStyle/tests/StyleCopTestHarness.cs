@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BrowningStyle.Tests
 {
-    class StyleCopTestHarness
+    public class StyleCopTestHarness
     {
     }
 }
