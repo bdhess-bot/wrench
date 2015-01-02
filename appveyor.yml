@@ -1,10 +1,15 @@
 version: ci-{build}
 
 before_build:
-  - git pull origin +refs/heads/*:refs/remotes/origin/*
+  # get a local copy of master
+  - git pull
+  - git checkout master
+  - git pull
+  - git checkout %APPVEYOR_REPO_BRANCH%
+  # now we can run gitversion
   - gitversion . /output buildserver
   - nuget restore BrowningStyle\BrowningStyle.sln
-  - 7z a -tzip BrowningStyle.Source.%FullSemVer%.zip BrowningStyle appveyor.yml
+  - 7z a -tzip BrowningStyle.Source.%NuGetVersion%.zip BrowningStyle appveyor.yml
 
 platform: Any CPU
 configuration: Release
@@ -19,8 +24,8 @@ build:
   project: BrowningStyle\BrowningStyle.sln
 
 after_build:
-  - nuget pack BrowningStyle\src\BrowningStyle.MSBuild.nuspec -Properties version=%FullSemVer%;configuration=%CONFIGURATION%
-  - 7z a -tzip BrowningStyle.Binaries.%FullSemVer%.zip .\BrowningStyle\src\bin\%CONFIGURATION%\BrowningStyle.dll .\BrowningStyle\src\bin\%FullSemVer%\BrowningStyle.pdb
+  - nuget pack BrowningStyle\src\BrowningStyle.MSBuild.nuspec -Properties version=%NuGetVersion%;configuration=%CONFIGURATION%
+  - 7z a -tzip BrowningStyle.Binaries.%NuGetVersion%.zip .\BrowningStyle\src\bin\%CONFIGURATION%\BrowningStyle.dll .\BrowningStyle\src\bin\%FullSemVer%\BrowningStyle.pdb
 
 artifacts:
  - path: BrowningStyle.MSBuild*.nupkg
