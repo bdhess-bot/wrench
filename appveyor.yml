@@ -2,7 +2,7 @@ version: ci-{build}
 
 before_build:
   # Fetch master so that we can get our git version
-  - git pull --all
+  - git pull origin
   - gitversion . /output buildserver
   - nuget restore BrowningStyle\BrowningStyle.sln
   - 7z a -tzip BrowningStyle.Source.%FullSemVer%.zip BrowningStyle appveyor.yml
