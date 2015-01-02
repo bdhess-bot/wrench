@@ -1,14 +1,7 @@
 version: ci-{build}
 
 before_build:
-  # get a local copy of master
-  - git checkout develop
-  - git pull
-  - git checkout master
-  - git pull
-  - git checkout %APPVEYOR_REPO_BRANCH%
-  - git checkout -qf %APPVEYOR_REPO_COMMIT%
-  # now we can run gitversion
+  - git remote seturl origin https://github.com/%APPVEYOR_REPO_NAME%
   - gitversion . /output buildserver
   - nuget restore BrowningStyle\BrowningStyle.sln
   - 7z a -tzip BrowningStyle.Source.%NuGetVersion%.zip BrowningStyle appveyor.yml
