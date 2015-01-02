@@ -4,7 +4,6 @@ before_build:
   - git remote set-url origin https://github.com/%APPVEYOR_REPO_NAME%.git
   - gitversion .
   - nuget restore BrowningStyle\BrowningStyle.sln
-  - 7z a -tzip BrowningStyle.Source.%GitVersion_NuGetVersion%.zip BrowningStyle appveyor.yml
 
 platform: Any CPU
 configuration: Release
@@ -19,6 +18,7 @@ build:
   project: BrowningStyle\BrowningStyle.sln
 
 after_build:
+  - 7z a -tzip BrowningStyle.Source.%GitVersion_NuGetVersion%.zip BrowningStyle appveyor.yml
   - nuget pack BrowningStyle\src\BrowningStyle.MSBuild.nuspec -Properties version=%GitVersion_NuGetVersion%;configuration=%CONFIGURATION%
   - 7z a -tzip BrowningStyle.Binaries.%GitVersion_NuGetVersion%.zip .\BrowningStyle\src\bin\%CONFIGURATION%\BrowningStyle.dll .\BrowningStyle\src\bin\%CONFIGURATION%\BrowningStyle.pdb
 
