@@ -15,11 +15,12 @@
     <dependencies>
       <group>
         <dependency id="BrowningStyle.MSBuild" version="$version$" />
+        <dependency id="GitVersionTask" version="2.0.0" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="Wrench.props" target="build" />
-    <file src="DefaultSettings.stylecop" target="tools" />
+    <file src="build\Wrench.props" target="build" />
+    <file src="tools\DefaultSettings.stylecop" target="tools" />
   </files>
 </package>
