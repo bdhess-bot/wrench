@@ -1,31 +1,32 @@
-before_build:
+install:
   - git remote set-url origin https://github.com/%APPVEYOR_REPO_NAME%.git
-  - gitversion /b %APPVEYOR_REPO_BRANCH% /output buildserver
-  - nuget restore BrowningStyle\BrowningStyle.sln
-  - 7z a -tzip BrowningStyle.Source.%GitVersion_NuGetVersion%.zip BrowningStyle appveyor.yml
+
+environment:
+  OutDir: $(APPVEYOR_BUILD_FOLDER)\bin
+  IntermediateDir: $(APPVEYOR_BUILD_FOLDER)\obj
+
+before_build:
+  - nuget restore src\Wrench.sln
 
 platform: Any CPU
 configuration: Release
-environment:
-  RunCodeAnalysis: true
-  StyleCopTreatErrorsAsWarnings: false
-  TreatWarningsAsErrors: true
-  CodeAnalysisTreatWarningsAsErrors: true
 
 build:
   parallel: true
-  project: BrowningStyle\BrowningStyle.sln
+  project: src\Wrench.sln
 
 after_build:
-  - nuget pack BrowningStyle\src\BrowningStyle.MSBuild.nuspec -Properties version=%GitVersion_NuGetVersion%;configuration=%CONFIGURATION%
-  - 7z a -tzip BrowningStyle.Binaries.%GitVersion_NuGetVersion%.zip .\BrowningStyle\src\bin\%CONFIGURATION%\BrowningStyle.dll .\BrowningStyle\src\bin\%CONFIGURATION%\BrowningStyle.pdb
+  - 7z a -tzip Wrench.Source.%GitVersion_NuGetVersion%.zip src appveyor.yml
+  - 7z a -tzip Wrench.Binaries.%GitVersion_NuGetVersion%.zip %OutDir%
+  - nuget pack src\BrowningStyle\BrowningStyle.MSBuild.nuspec -Properties version=%GitVersion_NuGetVersion%;outdir=%OutDir%\BrowningStyle\%Configuration%
+  - nuget pack src\Wrench\Wrench.nuspec -Properties version=%GitVersion_NuGetVersion%
 
 artifacts:
- - path: BrowningStyle.MSBuild*.nupkg
+ - path: *.nupkg
    name: NuGet
- - path: BrowningStyle.Binaries*.zip
+ - path: Wrench.Binaries*.zip
    name: Binaries
- - path: BrowningStyle.Source*.zip
+ - path: Wrench.Source*.zip
    name: Source
 
 deploy:

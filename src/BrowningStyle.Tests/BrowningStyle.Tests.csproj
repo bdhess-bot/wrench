@@ -13,7 +13,7 @@
     <AssemblyName>BrowningStyle.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>8c969854</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>23ac9805</NuGetPackageImportStamp>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -66,7 +66,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\BrowningStyle.csproj">
+    <ProjectReference Include="..\BrowningStyle\BrowningStyle.csproj">
       <Project>{5dc76d38-3010-4722-b13e-9a968f052597}</Project>
       <Name>BrowningStyle</Name>
     </ProjectReference>
@@ -81,9 +81,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets'))" />
-    <Error Condition="!Exists('..\packages\GitVersionTask.2.0.0\Build\GitVersionTask.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\GitVersionTask.2.0.0\Build\GitVersionTask.targets'))" />
     <Error Condition="!Exists('..\packages\xunit.core.2.0.0-beta5-build2785\build\portable-net45+win+wpa81+wp80+monotouch+monoandroid\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.0.0-beta5-build2785\build\portable-net45+win+wpa81+wp80+monotouch+monoandroid\xunit.core.props'))" />
     <Error Condition="!Exists('..\packages\xunit.runner.visualstudio.0.99.9-build1021\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.runner.visualstudio.0.99.9-build1021\build\net20\xunit.runner.visualstudio.props'))" />
+    <Error Condition="!Exists('..\packages\GitVersionTask.2.0.0\Build\GitVersionTask.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\GitVersionTask.2.0.0\Build\GitVersionTask.targets'))" />
   </Target>
   <Import Project="..\packages\GitVersionTask.2.0.0\Build\GitVersionTask.targets" Condition="Exists('..\packages\GitVersionTask.2.0.0\Build\GitVersionTask.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

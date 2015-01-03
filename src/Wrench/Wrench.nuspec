@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<package>
+  <metadata>
+    <id>Wrench</id>
+    <version>$version$</version>
+    <title>Wrench</title>
+    <authors>Brad Hess</authors>
+    <owners>Brad Hess</owners>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Build tools for style and code analysis checking.</description>
+    <projectUrl>https://github.com/bdhess/browningstyle</projectUrl>
+    <developmentDependency>true</developmentDependency>
+    <tags>Build MSBuild StyleCop Code Analysis Coverity</tags>
+    <dependencies>
+      <group>
+        <dependency id="BrowningStyle.MSBuild" version="$version$" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="Wrench.props" target="build" />
+    <file src="DefaultSettings.stylecop" target="tools" />
+  </files>
+</package>
