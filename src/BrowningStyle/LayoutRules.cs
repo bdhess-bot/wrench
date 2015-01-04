@@ -37,22 +37,19 @@ namespace BrowningStyle
         /// <param name="document">The document to process.</param>
         private void CheckLayout(CsDocument document)
         {
-            using (TextReader reader = document.SourceCode.Read())
+            foreach (Node<CsToken> tokenNode in document.Tokens.ForwardNodeIterator())
             {
-                string[] lines = reader.ReadToEnd().Split(new[] { Environment.NewLine }, StringSplitOptions.None);
-                Console.WriteLine("Counted {0} lines in {1}.", lines.Length, document.SourceCode.Path);
+                CsToken token = tokenNode.Value;
 
-                if (!string.IsNullOrEmpty(lines[lines.Length - 1]))
+                if (token.CsTokenType == CsTokenType.EndOfLine && 
+                    tokenNode.Previous.Value.CsTokenType == CsTokenType.WhiteSpace)
                 {
-                    this.AddViolation(document.RootElement, lines.Length, "FileMustEndWithNewLine");
+                    this.AddViolation(document.RootElement, tokenNode.Previous.Value.Location, "NoTrailingWhiteSpace");
                 }
 
-                for (int i = 0; i < lines.Length; i++)
+                if (tokenNode == document.Tokens.Last && token.CsTokenType != CsTokenType.EndOfLine)
                 {
-                    if (Regex.IsMatch(lines[i], "\\s$"))
-                    {
-                        this.AddViolation(document.RootElement, i + 1, "NoTrailingWhiteSpace");
-                    }
+                    this.AddViolation(document.RootElement, token.Location, "FileMustEndWithNewLine");
                 }
             }
         }

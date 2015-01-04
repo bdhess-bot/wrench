@@ -90,13 +90,17 @@ namespace BrowningStyle.Tests
                 this.Dump(session.Violations);
 
                 Assert.NotEmpty(session.Violations);
-                Assert.Equal(1, session.Violations.Count);
+                Assert.Equal(2, session.Violations.Count);
 
-                Violation v = session.Violations.Single();
-                Assert.Equal(13, v.Line);
-                Assert.Equal("Use of the var keyword is disallowed.", v.Message);
-                Assert.Equal("BS1101", v.Rule.CheckId);
-                Assert.Equal("DoNotUseVarKeyword", v.Rule.Name);
+                Assert.Equal(13, session.Violations.Skip(0).First().Line);
+                Assert.Equal(20, session.Violations.Skip(1).First().Line);
+
+                foreach (Violation v in session.Violations)
+                {
+                    Assert.Equal("Use of the var keyword is disallowed.", v.Message);
+                    Assert.Equal("BS1101", v.Rule.CheckId);
+                    Assert.Equal("DoNotUseVarKeyword", v.Rule.Name);
+                }
             }
         }
 

@@ -13,5 +13,12 @@ namespace BrowningStyle.Tests.Collateral
             var x = "This is a test";
             Console.WriteLine(x);
         }
+
+        static void Main2()
+        {
+            int x = 3;
+            var y = x + 1;
+            Console.WriteLine(y);
+        }
     }
 }
