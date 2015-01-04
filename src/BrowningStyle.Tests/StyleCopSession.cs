@@ -33,6 +33,7 @@ namespace BrowningStyle.Tests
             Console.WriteLine("Extracting settings to: {0}", settings);
 
             string[] addInPaths = new[] { AppDomain.CurrentDomain.BaseDirectory };
+            Console.WriteLine(addInPaths);
             StyleCopConsole console = new StyleCopConsole(settings, false, null, addInPaths, true);
 
             this.Violations = new List<Violation>();
