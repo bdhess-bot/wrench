@@ -9,10 +9,12 @@ namespace BrowningStyle.Tests
 {
     public class UnitTests
     {
+        private readonly bool theTruth = true;
+
         [Fact]
         public void Fact()
         {
-            Assert.True(true);
+            Assert.True(this.theTruth);
         }
     }
 }
