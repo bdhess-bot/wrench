@@ -51,7 +51,7 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Label="AnalysisSettings">
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)..\tools\AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSetDirectories>$(MSBuildThisFileDirectory)..\tools\;$(CodeAnalysisRuleSetDirectories)</CodeAnalysisRuleSetDirectories>
     <StyleCopOverrideSettingsFile>$(MSBuildThisFileDirectory)..\tools\DefaultSettings.stylecop</StyleCopOverrideSettingsFile>
   </PropertyGroup>
