@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="AssemblyInfo.cs" company="Brad Hess">
+//   See LICENSE in the repo root for copyright and licensing information.
+// </copyright>
+
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.InteropServices;

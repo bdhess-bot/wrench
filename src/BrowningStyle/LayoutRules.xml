@@ -4,14 +4,14 @@
     Rules which enforce some coding best practices.
   </Description>
   <Rules>
-    <RuleGroup Name="Whitespace">
-      <Rule Name="NoTrailingWhitespace" CheckId="BS1000">
-        <Context>The last character of a line must not be whitespace.</Context>
+    <RuleGroup Name="WhiteSpace">
+      <Rule Name="NoTrailingWhiteSpace" CheckId="BS1000">
+        <Context>The last character of a line must not be white space.</Context>
         <Description>Those tabs and spaces add precious bytes.</Description>
       </Rule>
-      <Rule Name="FileMustEndWithNewline" CheckId="BS1001">
-        <Context>The last character in a source file must be a newline.</Context>
-        <Description>Validates that the file ends with a newline.</Description>
+      <Rule Name="FileMustEndWithNewLine" CheckId="BS1001">
+        <Context>The last character in a source file must be a new line.</Context>
+        <Description>Validates that the file ends with a new line.</Description>
       </Rule>
     </RuleGroup>
     <RuleGroup Name="Readability">

@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="LayoutRules.cs" company="Brad Hess">
+//   See LICENSE in the repo root for copyright and licensing information.
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,7 +24,7 @@ namespace BrowningStyle
             Param.RequireNotNull(document, "document");
             CsDocument csharpDocument = (CsDocument)document;
 
-            if (csharpDocument.RootElement != null && !csharpDocument.RootElement.Generated)
+            if (csharpDocument.RootElement != null)
             {
                 this.CheckLayout(csharpDocument);
                 csharpDocument.WalkDocument(this.ProcessElement, this.ProcessStatement);
@@ -35,18 +39,18 @@ namespace BrowningStyle
         {
             using (TextReader reader = document.SourceCode.Read())
             {
-                string[] lines = reader.ReadToEnd().Split(new[] { "\r\n" }, StringSplitOptions.None);
+                string[] lines = reader.ReadToEnd().Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
                 if (!string.IsNullOrEmpty(lines[lines.Length - 1]))
                 {
-                    this.AddViolation(document.RootElement, lines.Length, "FileMustEndWithNewline");
+                    this.AddViolation(document.RootElement, lines.Length, "FileMustEndWithNewLine");
                 }
 
                 for (int i = 0; i < lines.Length; i++)
                 {
                     if (Regex.IsMatch(lines[i], "\\s$"))
                     {
-                        this.AddViolation(document.RootElement, i + 1, "NoTrailingWhitespace");
+                        this.AddViolation(document.RootElement, i + 1, "NoTrailingWhiteSpace");
                     }
                 }
             }
