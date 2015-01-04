@@ -38,6 +38,7 @@ namespace BrowningStyle.Tests
             {
                 Console.WriteLine(file);
             }
+            
             StyleCopConsole console = new StyleCopConsole(settings, false, null, addInPaths, true);
 
             foreach (var parser in console.Core.Parsers)
