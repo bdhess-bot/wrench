@@ -6,9 +6,11 @@
   </Target>
   <Target Name="CheckValue" BeforeTargets="BeforeBuild">
     <Message Text="Code analysis rule set: $(CodeAnalysisRuleSet)" />
+    <Message Text="Stylecop settings: $(StyleCopOverrideSettingsFile)" />
   </Target>
   <Target Name="CheckValue2" AfterTargets="AfterBuild">
     <Message Text="Code analysis rule set: $(CodeAnalysisRuleSet)" />
+    <Message Text="Stylecop settings: $(StyleCopOverrideSettingsFile)" />
   </Target>
   <PropertyGroup Label="Basic">
     <RestorePackages>true</RestorePackages>
