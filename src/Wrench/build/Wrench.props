@@ -4,6 +4,12 @@
     <Error Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'" Text="Build property SolutionDir must be defined." />
     <Error Condition="$([MSBuild]::MakeRelative($(SolutionDir), $(MSBuildProjectDirectory)).StartsWith('.'))" Text="Project directory should be a subdirectory of solution directory." />
   </Target>
+  <Target Name="CheckValue" BeforeTargets="BeforeBuild">
+    <Message Text="Code analysis rule set: $(CodeAnalysisRuleSet)" />
+  </Target>
+  <Target Name="CheckValue2" AfterTargets="AfterBuild">
+    <Message Text="Code analysis rule set: $(CodeAnalysisRuleSet)" />
+  </Target>
   <PropertyGroup Label="Basic">
     <RestorePackages>true</RestorePackages>
     <WarningLevel>4</WarningLevel>
