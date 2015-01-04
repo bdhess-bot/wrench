@@ -4,14 +4,6 @@
     <Error Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'" Text="Build property SolutionDir must be defined." />
     <Error Condition="$([MSBuild]::MakeRelative($(SolutionDir), $(MSBuildProjectDirectory)).StartsWith('.'))" Text="Project directory should be a subdirectory of solution directory." />
   </Target>
-  <Target Name="CheckValue" BeforeTargets="BeforeBuild">
-    <Message Text="Code analysis rule set: $(CodeAnalysisRuleSet)" />
-    <Message Text="Stylecop settings: $(StyleCopOverrideSettingsFile)" />
-  </Target>
-  <Target Name="CheckValue2" AfterTargets="AfterBuild">
-    <Message Text="Code analysis rule set: $(CodeAnalysisRuleSet)" />
-    <Message Text="Stylecop settings: $(StyleCopOverrideSettingsFile)" />
-  </Target>
   <PropertyGroup Label="Basic">
     <RestorePackages>true</RestorePackages>
     <WarningLevel>4</WarningLevel>
@@ -60,6 +52,7 @@
   </PropertyGroup>
   <PropertyGroup Label="AnalysisSettings">
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>$(MSBuildThisFileDirectory)..\tools\;$(CodeAnalysisRuleSetDirectories)</CodeAnalysisRuleSetDirectories>
     <StyleCopOverrideSettingsFile>$(MSBuildThisFileDirectory)..\tools\DefaultSettings.stylecop</StyleCopOverrideSettingsFile>
   </PropertyGroup>
   <PropertyGroup Label="RunAnalysis" Condition="'$(TeamFoundationServerUrl)' != '' OR '$(CI)' != ''">
