@@ -23,7 +23,7 @@ namespace BrowningStyle.Tests
         [InlineData("EndingNewLineSuccessCase.cs")]
         [InlineData("TrailingWhiteSpaceSuccessCase.cs")]
         [InlineData("UseOfVarSuccessCase.cs")]
-        public void Success(string path)
+        public static void Success(string path)
         {
             using (StyleCopSession session = new StyleCopSession(path))
             {
@@ -35,7 +35,7 @@ namespace BrowningStyle.Tests
         /// Ensure that a file that doesn't end with a newline is detected.
         /// </summary>
         [Fact]
-        public void EndingNewLineFailure()
+        public static void EndingNewLineFailure()
         {
             using (StyleCopSession session = new StyleCopSession("EndingNewLineFailureCase.cs"))
             {
@@ -54,7 +54,7 @@ namespace BrowningStyle.Tests
         /// Ensure that a file with trailing white space is detected.
         /// </summary>
         [Fact]
-        public void TrailingWhiteSpaceFailure()
+        public static void TrailingWhiteSpaceFailure()
         {
             using (StyleCopSession session = new StyleCopSession("TrailingWhiteSpaceFailureCase.cs"))
             {
@@ -78,7 +78,7 @@ namespace BrowningStyle.Tests
         /// Ensure that a use of the <code>var</code> contextual keyword is detected.
         /// </summary>
         [Fact]
-        public void UseOfVarFailure()
+        public static void UseOfVarFailure()
         {
             using (StyleCopSession session = new StyleCopSession("UseOfVarFailureCase.cs"))
             {
