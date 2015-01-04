@@ -27,6 +27,7 @@ namespace BrowningStyle.Tests
         {
             using (StyleCopSession session = new StyleCopSession(path))
             {
+                this.Dump(session.Violations);
                 Assert.Empty(session.Violations);
             }
         }
@@ -39,6 +40,8 @@ namespace BrowningStyle.Tests
         {
             using (StyleCopSession session = new StyleCopSession("EndingNewLineFailureCase.cs"))
             {
+                this.Dump(session.Violations);
+
                 Assert.NotEmpty(session.Violations);
                 Assert.Equal(1, session.Violations.Count);
 
@@ -58,6 +61,8 @@ namespace BrowningStyle.Tests
         {
             using (StyleCopSession session = new StyleCopSession("TrailingWhiteSpaceFailureCase.cs"))
             {
+                this.Dump(session.Violations);
+
                 Assert.NotEmpty(session.Violations);
                 Assert.Equal(3, session.Violations.Count);
 
@@ -82,6 +87,8 @@ namespace BrowningStyle.Tests
         {
             using (StyleCopSession session = new StyleCopSession("UseOfVarFailureCase.cs"))
             {
+                this.Dump(session.Violations);
+
                 Assert.NotEmpty(session.Violations);
                 Assert.Equal(1, session.Violations.Count);
 
@@ -90,6 +97,15 @@ namespace BrowningStyle.Tests
                 Assert.Equal("Use of the var keyword is disallowed.", v.Message);
                 Assert.Equal("BS1101", v.Rule.CheckId);
                 Assert.Equal("DoNotUseVarKeyword", v.Rule.Name);
+            }
+        }
+
+        private void Dump(IEnumerable<Violation> violations)
+        {
+            foreach (Violation violation in violations)
+            {
+                Console.WriteLine("Found violation in {0}, line {1}: {2}.",
+                    violation.SourceCode.Path, violation.Line, violation.Message);
             }
         }
     }
