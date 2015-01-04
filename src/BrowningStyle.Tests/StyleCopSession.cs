@@ -34,6 +34,10 @@ namespace BrowningStyle.Tests
 
             string[] addInPaths = new[] { AppDomain.CurrentDomain.BaseDirectory };
             Console.WriteLine(addInPaths[0]);
+            foreach (string file in Directory.GetFiles(addInPaths[0]))
+            {
+                Console.WriteLine(file);
+            }
             StyleCopConsole console = new StyleCopConsole(settings, false, null, addInPaths, true);
 
             this.Violations = new List<Violation>();
