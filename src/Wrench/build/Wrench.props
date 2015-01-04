@@ -16,12 +16,12 @@
   <Choose>
     <When Condition="'$(OutDir)' != ''">
       <PropertyGroup Label="OutDir">
-        <OutDir>$(OutDir)\$(ProjectRelativeDirectory)\$(Configuration)\</OutDir>
+        <OutDir>$(OutDir)\$(Configuration)\$(ProjectRelativeDirectory)\</OutDir>
       </PropertyGroup>
     </When>
     <Otherwise>
       <PropertyGroup Label="DefaultOutDir">
-        <OutDir>$(SolutionParentDir)\bin\$(ProjectRelativeDirectory)\$(Configuration)\</OutDir>
+        <OutDir>$(SolutionParentDir)\bin\$(Configuration)\$(ProjectRelativeDirectory)\</OutDir>
       </PropertyGroup>
     </Otherwise>
   </Choose>
@@ -31,12 +31,12 @@
   <Choose>
     <When Condition="'$(IntermediateDir)' != ''">
       <PropertyGroup Label="IntermediateDir">
-        <IntermediateOutputPath>$(IntermediateDir)\$(ProjectRelativeDirectory)\$(Configuration)\</IntermediateOutputPath>
+        <IntermediateOutputPath>$(IntermediateDir)\$(Configuration)\$(ProjectRelativeDirectory)\</IntermediateOutputPath>
       </PropertyGroup>
     </When>
     <Otherwise>
       <PropertyGroup Label="DefaultIntermediateDir">
-        <IntermediateOutputPath>$(SolutionParentDir)\obj\$(ProjectRelativeDirectory)\$(Configuration)\</IntermediateOutputPath>
+        <IntermediateOutputPath>$(SolutionParentDir)\obj\$(Configuration)\$(ProjectRelativeDirectory)\</IntermediateOutputPath>
       </PropertyGroup>
     </Otherwise>
   </Choose>
