@@ -104,8 +104,11 @@ namespace BrowningStyle.Tests
         {
             foreach (Violation violation in violations)
             {
-                Console.WriteLine("Found violation in {0}, line {1}: {2}.",
-                    violation.SourceCode.Path, violation.Line, violation.Message);
+                Console.WriteLine(
+                    "Found violation in {0}, line {1}: {2}.",
+                    violation.SourceCode.Path,
+                    violation.Line,
+                    violation.Message);
             }
         }
     }
