@@ -13,7 +13,7 @@ namespace BrowningStyle.Tests
     /// <summary>
     /// Unit tests for BrowningStyle
     /// </summary>
-    public class UnitTests
+    public static class UnitTests
     {
         /// <summary>
         /// Ensure that all success cases pass with no violations.
