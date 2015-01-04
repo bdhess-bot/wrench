@@ -30,6 +30,7 @@ namespace BrowningStyle.Tests
             Directory.CreateDirectory(this.tempDirectory);
 
             string settings = this.ExtractResource("TestSettings.stylecop");
+            Console.WriteLine("Extracting settings to: {0}", settings);
 
             string[] addInPaths = new[] { AppDomain.CurrentDomain.BaseDirectory };
             StyleCopConsole console = new StyleCopConsole(settings, false, null, addInPaths, true);
@@ -41,6 +42,7 @@ namespace BrowningStyle.Tests
             CodeProject project = new CodeProject(Guid.NewGuid().GetHashCode(), settings, configuration);
 
             string resourcePath = this.ExtractResource(resourceName);
+            Console.WriteLine("Extracting resource to: {0}", resourcePath);
             console.Core.Environment.AddSourceCode(project, resourcePath, null);
 
             console.Start(new[] { project }, true);
