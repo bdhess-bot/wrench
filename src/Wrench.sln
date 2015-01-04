@@ -18,6 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowningStyle.Tests", "Brow
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wrench", "Wrench", "{39E00DCA-D89D-410A-8F0A-E815B1A387D8}"
 	ProjectSection(SolutionItems) = preProject
+		Wrench\tools\AllRules.ruleset = Wrench\tools\AllRules.ruleset
 		Wrench\tools\DefaultSettings.stylecop = Wrench\tools\DefaultSettings.stylecop
 		Wrench\Wrench.nuspec = Wrench\Wrench.nuspec
 		Wrench\build\Wrench.props = Wrench\build\Wrench.props

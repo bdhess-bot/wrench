@@ -22,6 +22,7 @@
   </metadata>
   <files>
     <file src="build\Wrench.props" target="build" />
+    <file src="tools\AllRules.ruleset" target="tools" />
     <file src="tools\DefaultSettings.stylecop" target="tools" />
   </files>
 </package>
