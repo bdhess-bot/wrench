@@ -23,13 +23,13 @@ namespace BrowningStyle.Tests
         /// <summary>
         /// Initializes a new instance of the <see cref="StyleCopSession"/> class.
         /// </summary>
-        /// <param name="sourceCode">The test code source file as a string.</param>
-        public StyleCopSession(string sourceCode)
+        /// <param name="resourceName">The embedded resource to inspect</param>
+        public StyleCopSession(string resourceName)
         {
             this.tempDirectory = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
             Directory.CreateDirectory(this.tempDirectory);
 
-            string settings = this.PushCollateral(TestCollateral.Settings, "TestSettings.stylecop");
+            string settings = this.ExtractResource("TestSettings.stylecop");
             Console.WriteLine("Extracting settings to: {0}", settings);
 
             string[] addInPaths = new[] { AppDomain.CurrentDomain.BaseDirectory };
@@ -55,7 +55,7 @@ namespace BrowningStyle.Tests
             Configuration configuration = new Configuration(new string[0]);
             CodeProject project = new CodeProject(Guid.NewGuid().GetHashCode(), settings, configuration);
 
-            string resourcePath = this.PushCollateral(sourceCode, "TestCase.cs");
+            string resourcePath = this.ExtractResource(resourceName);
             Console.WriteLine("Extracting resource to: {0}", resourcePath);
             console.Core.Environment.AddSourceCode(project, resourcePath, null);
 
@@ -89,14 +89,30 @@ namespace BrowningStyle.Tests
         }
 
         /// <summary>
-        /// Push a collateral string into a temporary directory
+        /// Extract an embedded resource into the temporary directory
         /// </summary>
-        /// <param name="contents">The data to write.</param>
-        /// <param name="filename">The name of the file to create.</param>
+        /// <param name="filename">The relative name of the resource to extract.</param>
         /// <returns>The path to the extracted file.</returns>
-        private string PushCollateral(string contents, string filename)
+        private string ExtractResource(string filename)
         {
+            string collateralNamespace = typeof(StyleCopSession).Namespace + ".Collateral";
+            Assembly currentAssembly = typeof(StyleCopSession).Assembly;
+
+            string sourceResourceName = collateralNamespace + "." + filename;
             string targetPath = Path.Combine(this.tempDirectory, filename);
+
+            string contents;
+            using (StreamReader reader = new StreamReader(currentAssembly.GetManifestResourceStream(sourceResourceName)))
+            {
+                contents = reader.ReadToEnd();
+            }
+
+            Console.WriteLine("The platform new line character is: {0}", Environment.NewLine == "\r\n" ? @"\r\n" : @"\n");
+
+            Console.WriteLine(filename + ":");
+            Console.WriteLine(contents);
+            Console.WriteLine("###");
+
             File.WriteAllText(targetPath, contents);
             return targetPath;
         }
