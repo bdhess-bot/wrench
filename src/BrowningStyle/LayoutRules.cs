@@ -40,6 +40,7 @@ namespace BrowningStyle
             using (TextReader reader = document.SourceCode.Read())
             {
                 string[] lines = reader.ReadToEnd().Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+                Console.WriteLine("Counted {0} lines in {1}.", lines.Length, document.SourceCode.Path);
 
                 if (!string.IsNullOrEmpty(lines[lines.Length - 1]))
                 {
