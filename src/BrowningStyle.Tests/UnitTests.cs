@@ -100,6 +100,10 @@ namespace BrowningStyle.Tests
             }
         }
 
+        /// <summary>
+        /// Dump a set of violations to the console.
+        /// </summary>
+        /// <param name="violations">The violations to dump.</param>
         private void Dump(IEnumerable<Violation> violations)
         {
             foreach (Violation violation in violations)
