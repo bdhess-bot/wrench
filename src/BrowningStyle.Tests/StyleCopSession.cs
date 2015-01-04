@@ -107,6 +107,9 @@ namespace BrowningStyle.Tests
                 contents = reader.ReadToEnd();
             }
 
+            Console.WriteLine("The platform new line character is: {0}",
+                Environment.NewLine == "\r\n" ? @"\r\n" : @"\n");
+
             Console.WriteLine(filename + ":");
             Console.WriteLine(contents);
             Console.WriteLine("###");
