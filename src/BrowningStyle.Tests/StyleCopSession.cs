@@ -101,15 +101,17 @@ namespace BrowningStyle.Tests
             string sourceResourceName = collateralNamespace + "." + filename;
             string targetPath = Path.Combine(this.tempDirectory, filename);
 
-            using (Stream contents = currentAssembly.GetManifestResourceStream(sourceResourceName))
+            string contents;
+            using (StreamReader reader = new StreamReader(currentAssembly.GetManifestResourceStream(sourceResourceName)))
             {
-                using (FileStream file = File.Create(targetPath))
-                {
-                    contents.CopyTo(file);
-                    file.Flush(true);
-                }
+                contents = reader.ReadToEnd();
             }
 
+            Console.WriteLine(filename + ":");
+            Console.WriteLine(contents);
+            Console.WriteLine("###");
+
+            File.WriteAllText(targetPath, contents);
             return targetPath;
         }
     }
