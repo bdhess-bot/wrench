@@ -30,24 +30,9 @@ namespace BrowningStyle.Tests
             Directory.CreateDirectory(this.tempDirectory);
 
             string settings = this.ExtractResource("TestSettings.stylecop");
-            Console.WriteLine("Extracting settings to: {0}", settings);
 
             string[] addInPaths = new[] { AppDomain.CurrentDomain.BaseDirectory };
-            Console.WriteLine(addInPaths[0]);
-            foreach (string file in Directory.GetFiles(addInPaths[0]))
-            {
-                Console.WriteLine(file);
-            }
-            
             StyleCopConsole console = new StyleCopConsole(settings, false, null, addInPaths, true);
-
-            foreach (var parser in console.Core.Parsers)
-            {
-                foreach (var analyzer in parser.Analyzers)
-                {
-                    Console.WriteLine("Found analyzer: {0}::{1}", parser.Name, analyzer.Name);
-                }
-            }
 
             this.Violations = new List<Violation>();
             console.ViolationEncountered += (sender, args) => this.Violations.Add(args.Violation);
@@ -56,7 +41,6 @@ namespace BrowningStyle.Tests
             CodeProject project = new CodeProject(Guid.NewGuid().GetHashCode(), settings, configuration);
 
             string resourcePath = this.ExtractResource(resourceName);
-            Console.WriteLine("Extracting resource to: {0}", resourcePath);
             console.Core.Environment.AddSourceCode(project, resourcePath, null);
 
             console.Start(new[] { project }, true);
@@ -101,19 +85,14 @@ namespace BrowningStyle.Tests
             string sourceResourceName = collateralNamespace + "." + filename;
             string targetPath = Path.Combine(this.tempDirectory, filename);
 
-            string contents;
-            using (StreamReader reader = new StreamReader(currentAssembly.GetManifestResourceStream(sourceResourceName)))
+            using (Stream source = currentAssembly.GetManifestResourceStream(sourceResourceName))
             {
-                contents = reader.ReadToEnd();
+                using (FileStream destination = File.OpenWrite(targetPath))
+                {
+                    source.CopyTo(destination);
+                }
             }
 
-            Console.WriteLine("The platform new line character is: {0}", Environment.NewLine == "\r\n" ? @"\r\n" : @"\n");
-
-            Console.WriteLine(filename + ":");
-            Console.WriteLine(contents);
-            Console.WriteLine("###");
-
-            File.WriteAllText(targetPath, contents);
             return targetPath;
         }
     }
