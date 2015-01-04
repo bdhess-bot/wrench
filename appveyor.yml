@@ -3,8 +3,8 @@ install:
 
 before_build:
   - nuget restore src\Wrench.sln
-  - set OutDir='%APPVEYOR_BUILD_FOLDER%\bin'
-  - set IntermediateDir='%APPVEYOR_BUILD_FOLDER%\obj'
+  - set OutDir=%APPVEYOR_BUILD_FOLDER%\bin
+  - set IntermediateDir=%APPVEYOR_BUILD_FOLDER%\obj
 
 platform: Any CPU
 configuration: Release
