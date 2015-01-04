@@ -106,6 +106,7 @@ namespace BrowningStyle.Tests
                 using (FileStream file = File.Create(targetPath))
                 {
                     contents.CopyTo(file);
+                    file.Flush(true);
                 }
             }
 
