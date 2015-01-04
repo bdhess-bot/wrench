@@ -2,8 +2,8 @@ install:
   - git remote set-url origin https://github.com/%APPVEYOR_REPO_NAME%.git
 
 environment:
-  OutDir: $(APPVEYOR_BUILD_FOLDER)\bin
-  IntermediateDir: $(APPVEYOR_BUILD_FOLDER)\obj
+  OutDir: %APPVEYOR_BUILD_FOLDER%\bin
+  IntermediateDir: %APPVEYOR_BUILD_FOLDER%\obj
 
 before_build:
   - nuget restore src\Wrench.sln
