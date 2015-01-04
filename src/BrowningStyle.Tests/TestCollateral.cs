@@ -1,10 +1,17 @@
-﻿using System;
+﻿// <copyright file="TestCollateral.cs" company="Brad Hess">
+//   See LICENSE in the repo root for copyright and licensing information.
+// </copyright>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace BrowningStyle.Tests
 {
-    class TestCollateral
+    /// <summary>
+    /// Collateral string for unit tests.
+    /// </summary>
+    internal static class TestCollateral
     {
         /// <summary>
         /// A test case that should fail since it does not end with a new line.
@@ -80,6 +87,5 @@ namespace Collateral
 <?xml version=""1.0"" encoding=""utf-8"" ?>
 <StyleCopSettings Version=""105"">
 </StyleCopSettings>";
-
     }
 }
