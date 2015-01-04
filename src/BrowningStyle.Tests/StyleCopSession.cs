@@ -40,6 +40,14 @@ namespace BrowningStyle.Tests
             }
             StyleCopConsole console = new StyleCopConsole(settings, false, null, addInPaths, true);
 
+            foreach (var parser in console.Core.Parsers)
+            {
+                foreach (var analyzer in parser.Analyzers)
+                {
+                    Console.WriteLine("Found analyzer: {0}::{1}", parser.Name, analyzer.Name);
+                }
+            }
+
             this.Violations = new List<Violation>();
             console.ViolationEncountered += (sender, args) => this.Violations.Add(args.Violation);
 
