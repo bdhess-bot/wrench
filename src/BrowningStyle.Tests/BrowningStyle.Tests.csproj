@@ -47,18 +47,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Collateral\UseOfVarFailureCase.cs" />
-    <EmbeddedResource Include="Collateral\UseOfVarSuccessCase.cs" />
-    <EmbeddedResource Include="Collateral\EndingNewLineFailureCase.cs" />
-    <EmbeddedResource Include="Collateral\EndingNewLineSuccessCase.cs" />
-    <EmbeddedResource Include="Collateral\TrailingWhiteSpaceFailureCase.cs" />
-    <EmbeddedResource Include="Collateral\TrailingWhiteSpaceSuccessCase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StyleCopSession.cs" />
+    <Compile Include="TestCollateral.cs" />
     <Compile Include="UnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Collateral\TestSettings.stylecop" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
