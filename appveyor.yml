@@ -16,7 +16,7 @@ build:
 after_build:
   - 7z a -tzip Wrench.Source.%GitVersion_NuGetVersion%.zip src appveyor.yml
   - 7z a -tzip Wrench.Binaries.%GitVersion_NuGetVersion%.zip %OutDir%
-  - nuget pack src\Wrench\Wrench.nuspec -BasePath Wrench -Properties version=%GitVersion_NuGetVersion%;outdir=%OutDir%\$configuration%
+  - nuget pack src\Wrench\Wrench.nuspec -BasePath Wrench -Properties version=%GitVersion_NuGetVersion%;outdir=%OutDir%\%configuration%
 
 artifacts:
  - path: Wrench*.nupkg
