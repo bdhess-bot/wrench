@@ -14,7 +14,7 @@
     <tags>Build MSBuild StyleCop Code Analysis Coverity</tags>
     <dependencies>
       <group>
-        <!--dependency id="FxCopWrapper" version="1.0.6" /-->
+        <dependency id="FxCopWrapper" version="1.0.6" />
         <dependency id="GitVersionTask" version="2.0.0" />
         <dependency id="StyleCop.MSBuild" version="4.7.49.0" />
       </group>
@@ -28,5 +28,7 @@
     <file src="tools\DefaultSettings.stylecop" target="tools" />
     <file src="$outdir$\BrowningStyle\Wrench.BrowningStyle.dll" target="tools" />
     <file src="$outdir$\BrowningStyle\Wrench.BrowningStyle.pdb" target="tools" />
+    <!--Put some content in the lib folder to force this to be a project-level package-->
+    <file src="$outdir$\BrowningStyle\Wrench.BrowningStyle.pdb" target="lib" />
   </files>
 </package>
