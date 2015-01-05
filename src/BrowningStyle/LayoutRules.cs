@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 using StyleCop;
 using StyleCop.CSharp;
 
-namespace BrowningStyle
+namespace Wrench.BrowningStyle
 {
     /// <summary>
     /// A <see cref="SourceAnalyzer" /> that applies our custom rules.

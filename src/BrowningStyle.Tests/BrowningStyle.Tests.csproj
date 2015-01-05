@@ -10,8 +10,8 @@
     <ProjectGuid>{BC202DFB-DE77-45E7-8FEC-C1F23F93DAA6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BrowningStyle.Tests</RootNamespace>
-    <AssemblyName>BrowningStyle.Tests</AssemblyName>
+    <RootNamespace>Wrench.BrowningStyle.Tests</RootNamespace>
+    <AssemblyName>Wrench.BrowningStyle.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>8cdf489b</NuGetPackageImportStamp>
@@ -21,8 +21,10 @@
   <Import Project="$(SolutionDir)\Wrench\build\Wrench.props" />
   <!--For Visual Studio-->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="StyleCop">

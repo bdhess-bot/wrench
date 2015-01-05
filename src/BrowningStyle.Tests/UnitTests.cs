@@ -8,7 +8,7 @@ using System.Linq;
 using StyleCop;
 using Xunit;
 
-namespace BrowningStyle.Tests
+namespace Wrench.BrowningStyle.Tests
 {
     /// <summary>
     /// Unit tests for BrowningStyle

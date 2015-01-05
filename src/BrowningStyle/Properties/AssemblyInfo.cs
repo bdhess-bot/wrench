@@ -7,9 +7,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("BrowningStyle")]
+[assembly: AssemblyTitle("Wrench.BrowningStyle")]
 [assembly: AssemblyDescription("A collection of StyleCop rules for the detail-oriented developer.")]
-[assembly: AssemblyProduct("BrowningStyle")]
+[assembly: AssemblyProduct("Wrench")]
 [assembly: AssemblyCopyright("Copyright ©  2014 Brad Hess")]
 [assembly: AssemblyCompany("Brad Hess")]
 [assembly: CLSCompliant(true)]

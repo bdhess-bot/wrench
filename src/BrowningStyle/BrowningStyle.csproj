@@ -8,12 +8,12 @@
     <ProjectGuid>{5DC76D38-3010-4722-B13E-9A968F052597}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BrowningStyle</RootNamespace>
-    <AssemblyName>BrowningStyle</AssemblyName>
+    <RootNamespace>Wrench.BrowningStyle</RootNamespace>
+    <AssemblyName>Wrench.BrowningStyle</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <NuGetPackageImportStamp>3f8a770a</NuGetPackageImportStamp>
   </PropertyGroup>
   <!--Local import of Wrench-->
@@ -43,11 +43,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="BrowningStyle.MSBuild.nuspec" />
-    <None Include="BrowningStyle.MSBuild.props" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!--Local import of Wrench-->
+  <Import Project="$(SolutionDir)\Wrench\build\Wrench.targets" />
   <!--Auto-added by NuGet-->
   <Import Project="..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -5,6 +5,7 @@
     <Error Condition="$([MSBuild]::MakeRelative($(SolutionDir), $(MSBuildProjectDirectory)).StartsWith('.'))" Text="Project directory should be a subdirectory of solution directory." />
   </Target>
   <PropertyGroup Label="Basic">
+    <SolutionDir Condition="$(SolutionDir.StartsWith('.'))">$([System.IO.Path]::GetFullPath($(SolutionDir)))</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <WarningLevel>4</WarningLevel>
     <ErrorReport>prompt</ErrorReport>
@@ -55,6 +56,11 @@
     <CodeAnalysisRuleSetDirectories>$(MSBuildThisFileDirectory)..\tools\;$(CodeAnalysisRuleSetDirectories)</CodeAnalysisRuleSetDirectories>
     <StyleCopOverrideSettingsFile>$(MSBuildThisFileDirectory)..\tools\DefaultSettings.stylecop</StyleCopOverrideSettingsFile>
   </PropertyGroup>
+  <ItemGroup>
+    <StyleCopAdditionalAddinPaths Include="$(MSBuildThisFileDirectory)..\tools\">
+      <Visible>False</Visible>
+    </StyleCopAdditionalAddinPaths>
+  </ItemGroup>
   <PropertyGroup Label="RunAnalysis" Condition="'$(TeamFoundationServerUrl)' != '' OR '$(CI)' != ''">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>

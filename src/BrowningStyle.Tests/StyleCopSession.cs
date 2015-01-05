@@ -8,7 +8,7 @@ using System.IO;
 using System.Reflection;
 using StyleCop;
 
-namespace BrowningStyle.Tests
+namespace Wrench.BrowningStyle.Tests
 {
     /// <summary>
     /// A virtual session with the StyleCop analyzer.

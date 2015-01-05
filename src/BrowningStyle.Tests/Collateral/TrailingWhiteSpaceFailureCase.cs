@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrowningStyle.Tests.Collateral
+namespace Wrench.BrowningStyle.Tests.Collateral
 {
     class TrailingWhiteSpaceFailureCase   
     {

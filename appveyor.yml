@@ -16,11 +16,10 @@ build:
 after_build:
   - 7z a -tzip Wrench.Source.%GitVersion_NuGetVersion%.zip src appveyor.yml
   - 7z a -tzip Wrench.Binaries.%GitVersion_NuGetVersion%.zip %OutDir%
-  - nuget pack src\BrowningStyle\BrowningStyle.MSBuild.nuspec -Properties version=%GitVersion_NuGetVersion%;outdir=%OutDir%\%Configuration%\BrowningStyle
-  - nuget pack src\Wrench\Wrench.nuspec -Properties version=%GitVersion_NuGetVersion%
+  - nuget pack src\Wrench\Wrench.nuspec -BasePath Wrench -Properties version=%GitVersion_NuGetVersion%;outdir=%OutDir%\$configuration%
 
 artifacts:
- - path: BrowningStyle*.nupkg,Wrench*.nupkg
+ - path: Wrench*.nupkg
    name: NuGet
  - path: Wrench.Binaries*.zip
    name: Binaries
