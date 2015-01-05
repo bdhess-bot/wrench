@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <package>
   <metadata>
-    <id>WrenchBuild</id>
+    <id>Wrench.MSBuild</id>
     <version>$version$</version>
     <title>Wrench</title>
     <authors>Brad Hess</authors>
@@ -21,8 +21,6 @@
     </dependencies>
   </metadata>
   <files>
-    <!--Note that NuGet requires that props and targets be suffixed
-    with .MSBuild in order to insert correctly.-->
     <file src="build\Wrench.props" target="build\Wrench.MSBuild.props" />
     <file src="build\Wrench.targets" target="build\Wrench.MSBuild.targets" />
     <file src="tools\AllRules.ruleset" target="tools" />
