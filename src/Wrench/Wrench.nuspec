@@ -14,7 +14,7 @@
     <tags>Build MSBuild StyleCop Code Analysis Coverity</tags>
     <dependencies>
       <group>
-        <dependency id="FxCopWrapper" version="1.0.6" />
+        <!--dependency id="FxCopWrapper" version="1.0.6" /-->
         <dependency id="GitVersionTask" version="2.0.0" />
         <dependency id="StyleCop.MSBuild" version="4.7.49.0" />
       </group>
