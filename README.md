@@ -11,3 +11,8 @@ wrench
 [issues-closed]: http://www.issuestats.com/github/bdhess/wrench
 
 Build tools for style, consistency, and code analysis checking.
+
+Depends on
+* FxCopWrapper
+* GitVersion
+* StyleCop.MSBuild
