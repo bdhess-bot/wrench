@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <package>
   <metadata>
-    <id>Wrench</id>
+    <id>WrenchBuild</id>
     <version>$version$</version>
     <title>Wrench</title>
     <authors>Brad Hess</authors>
@@ -9,7 +9,7 @@
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Build tools for style and code analysis checking.</description>
-    <projectUrl>https://github.com/bdhess/browningstyle</projectUrl>
+    <projectUrl>https://github.com/bdhess/wrench</projectUrl>
     <developmentDependency>true</developmentDependency>
     <tags>Build MSBuild StyleCop Code Analysis Coverity</tags>
     <dependencies>
