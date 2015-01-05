@@ -21,14 +21,13 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\LICENSE" target="LICENSE" />
-    <file src="build\Wrench.props" target="build" />
-    <file src="build\Wrench.targets" target="build" />
+    <!--Note that NuGet requires that props and targets be suffixed
+    with .MSBuild in order to insert correctly.-->
+    <file src="build\Wrench.props" target="build\Wrench.MSBuild.props" />
+    <file src="build\Wrench.targets" target="build\Wrench.MSBuild.targets" />
     <file src="tools\AllRules.ruleset" target="tools" />
     <file src="tools\DefaultSettings.stylecop" target="tools" />
     <file src="$outdir$\BrowningStyle\Wrench.BrowningStyle.dll" target="tools" />
     <file src="$outdir$\BrowningStyle\Wrench.BrowningStyle.pdb" target="tools" />
-    <!--Put some content in the lib folder to force this to be a project-level package-->
-    <file src="$outdir$\BrowningStyle\Wrench.BrowningStyle.pdb" target="lib" />
   </files>
 </package>

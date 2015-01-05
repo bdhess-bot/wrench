@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Target Name="CheckSolutionDir" BeforeTargets="BeforeBuild">
-    <Error Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'" Text="Build property SolutionDir must be defined." />
-    <Error Condition="$([MSBuild]::MakeRelative($(SolutionDir), $(MSBuildProjectDirectory)).StartsWith('.'))" Text="Project directory should be a subdirectory of solution directory." />
-  </Target>
   <PropertyGroup Label="Basic">
     <SolutionDir Condition="$(SolutionDir.StartsWith('.'))">$([System.IO.Path]::GetFullPath($(SolutionDir)))</SolutionDir>
     <RestorePackages>true</RestorePackages>
