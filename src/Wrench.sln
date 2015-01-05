@@ -1,0 +1,60 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowningStyle", "BrowningStyle\BrowningStyle.csproj", "{5DC76D38-3010-4722-B13E-9A968F052597}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CB9BF16D-DC7D-4BAC-91F8-21DC2BF5646D} = {CB9BF16D-DC7D-4BAC-91F8-21DC2BF5646D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowningStyle.Tests", "BrowningStyle.Tests\BrowningStyle.Tests.csproj", "{BC202DFB-DE77-45E7-8FEC-C1F23F93DAA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wrench", "Wrench", "{39E00DCA-D89D-410A-8F0A-E815B1A387D8}"
+	ProjectSection(SolutionItems) = preProject
+		Wrench\tools\AllRules.ruleset = Wrench\tools\AllRules.ruleset
+		Wrench\tools\DefaultSettings.stylecop = Wrench\tools\DefaultSettings.stylecop
+		Wrench\Wrench.nuspec = Wrench\Wrench.nuspec
+		Wrench\build\Wrench.props = Wrench\build\Wrench.props
+		Wrench\build\Wrench.targets = Wrench\build\Wrench.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WrenchTasks", "Tasks\WrenchTasks.csproj", "{CB9BF16D-DC7D-4BAC-91F8-21DC2BF5646D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6ACE26D3-DE79-408D-AF5D-C1C11CB1E091}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C05CFF82-9F9C-41F6-B13E-BB99F5CAD0F6}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\appveyor.yml = ..\appveyor.yml
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DC76D38-3010-4722-B13E-9A968F052597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DC76D38-3010-4722-B13E-9A968F052597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DC76D38-3010-4722-B13E-9A968F052597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DC76D38-3010-4722-B13E-9A968F052597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC202DFB-DE77-45E7-8FEC-C1F23F93DAA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC202DFB-DE77-45E7-8FEC-C1F23F93DAA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC202DFB-DE77-45E7-8FEC-C1F23F93DAA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC202DFB-DE77-45E7-8FEC-C1F23F93DAA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB9BF16D-DC7D-4BAC-91F8-21DC2BF5646D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB9BF16D-DC7D-4BAC-91F8-21DC2BF5646D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB9BF16D-DC7D-4BAC-91F8-21DC2BF5646D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB9BF16D-DC7D-4BAC-91F8-21DC2BF5646D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

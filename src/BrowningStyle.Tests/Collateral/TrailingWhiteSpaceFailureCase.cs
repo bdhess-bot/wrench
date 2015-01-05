@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrowningStyle.Tests
+namespace Wrench.BrowningStyle.Tests.Collateral
 {
-    public class StyleCopTestHarness
+    class TrailingWhiteSpaceFailureCase   
     {
+ 
     }
+            
 }

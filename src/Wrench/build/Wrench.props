@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="CheckSolutionDir" BeforeTargets="BeforeBuild">
+    <Error Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'" Text="Build property SolutionDir must be defined." />
+    <Error Condition="$([MSBuild]::MakeRelative($(SolutionDir), $(MSBuildProjectDirectory)).StartsWith('.'))" Text="Project directory should be a subdirectory of solution directory." />
+  </Target>
+  <PropertyGroup Label="Basic">
+    <SolutionDir Condition="$(SolutionDir.StartsWith('.'))">$([System.IO.Path]::GetFullPath($(SolutionDir)))</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <WarningLevel>4</WarningLevel>
+    <ErrorReport>prompt</ErrorReport>
+    <DebugSymbols>true</DebugSymbols>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <SolutionParentDir>$([System.IO.Directory]::GetParent($(SolutionDir.TrimEnd('/\'))))</SolutionParentDir>
+    <ProjectRelativeDirectory>$([MSBuild]::MakeRelative($(SolutionDir), $(MSBuildProjectDirectory)))</ProjectRelativeDirectory>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="'$(OutDir)' != ''">
+      <PropertyGroup Label="OutDir">
+        <OutDir>$(OutDir)\$(Configuration)\$(ProjectRelativeDirectory)\</OutDir>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup Label="DefaultOutDir">
+        <OutDir>$(SolutionParentDir)\bin\$(Configuration)\$(ProjectRelativeDirectory)\</OutDir>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <PropertyGroup Label="OutputPath">
+    <OutputPath>$(OutDir)</OutputPath>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="'$(IntermediateDir)' != ''">
+      <PropertyGroup Label="IntermediateDir">
+        <IntermediateOutputPath>$(IntermediateDir)\$(Configuration)\$(ProjectRelativeDirectory)\</IntermediateOutputPath>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup Label="DefaultIntermediateDir">
+        <IntermediateOutputPath>$(SolutionParentDir)\obj\$(Configuration)\$(ProjectRelativeDirectory)\</IntermediateOutputPath>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <PropertyGroup Label="Debug" Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Label="Release" Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Label="AnalysisSettings">
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)..\tools\AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>$(MSBuildThisFileDirectory)..\tools\;$(CodeAnalysisRuleSetDirectories)</CodeAnalysisRuleSetDirectories>
+    <StyleCopOverrideSettingsFile>$(MSBuildThisFileDirectory)..\tools\DefaultSettings.stylecop</StyleCopOverrideSettingsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <StyleCopAdditionalAddinPaths Include="$(MSBuildThisFileDirectory)..\tools\">
+      <Visible>False</Visible>
+    </StyleCopAdditionalAddinPaths>
+  </ItemGroup>
+  <PropertyGroup Label="RunAnalysis" Condition="'$(TeamFoundationServerUrl)' != '' OR '$(CI)' != ''">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="CheckSolutionDir" BeforeTargets="BeforeBuild">
+    <Error Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'" Text="Build property SolutionDir must be defined." />
+    <Error Condition="$([MSBuild]::MakeRelative($(SolutionDir), $(MSBuildProjectDirectory)).StartsWith('.'))" Text="Project directory should be a subdirectory of solution directory." />
+  </Target>
+
+  <UsingTask TaskName="FindNuGet" AssemblyFile="C:\Users\Bradley\Source\Repos\browningstyle\bin\Debug\Tasks\Wrench.Tasks.dll"/>
+  <UsingTask TaskName="NuGetPack" AssemblyFile="C:\Users\Bradley\Source\Repos\browningstyle\bin\Debug\Tasks\Wrench.Tasks.dll"/>
+
+  <Target Name="NuGetPack" AfterTargets="CopyFilesToOutputDirectory" Condition="'@(NuGetPack)' != ''">
+    <ItemGroup>
+      <NuGetPackProperties Include="version=$(GfvNuGetVersion)" />
+      <NuGetPackProperties Include="outdir=&quot;$(OutDir.TrimEnd('/\'))&quot;" />
+    </ItemGroup>
+
+    <FindNuGet
+        PackagesDirectory="$(MSBuildThisFileDirectory)..\..\"
+        ProjectDirectory="$(MSBuildProjectDirectory)"
+        Condition="'$(NuGetExecutable)' == ''">
+      <Output TaskParameter="Result" PropertyName="NuGetExecutable"/>
+    </FindNuGet>
+
+    <NuGetPack
+        Executable="$(NuGetExecutable)"
+        TargetFiles="@(NuGetPack)"
+        BaseDirectory="$(MSBuildProjectDirectory)" 
+        OutputDirectory="$(OutDir)"
+        Properties="@(NuGetPackProperties)" />
+  </Target>
+</Project>
