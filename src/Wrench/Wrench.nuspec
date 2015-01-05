@@ -21,7 +21,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\LICENSE" target="." />
+    <file src="..\..\LICENSE" target="LICENSE" />
     <file src="build\Wrench.props" target="build" />
     <file src="build\Wrench.targets" target="build" />
     <file src="tools\AllRules.ruleset" target="tools" />
