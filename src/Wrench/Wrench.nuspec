@@ -11,7 +11,7 @@
     <description>Build tools for style and code analysis checking.</description>
     <projectUrl>https://github.com/bdhess/wrench</projectUrl>
     <developmentDependency>true</developmentDependency>
-    <tags>Build MSBuild StyleCop Code Analysis Coverity</tags>
+    <tags>Build MSBuild StyleCop Code Analysis</tags>
     <dependencies>
       <group>
         <dependency id="FxCopWrapper" version="1.0.6" />
