@@ -15,16 +15,14 @@
     <dependencies>
       <group>
         <dependency id="FxCopWrapper" version="1.0.6" />
-        <dependency id="GitVersionTask" version="2.0.0" />
-        <dependency id="StyleCop.MSBuild" version="4.7.49.0" />
+        <dependency id="GitVersionTask" version="2.0.1" />
+        <dependency id="StyleCop.MSBuild" version="4.7.49.1" />
       </group>
     </dependencies>
   </metadata>
   <files>
     <file src="build\Wrench.props" target="build\Wrench.MSBuild.props" />
     <file src="build\Wrench.targets" target="build\Wrench.MSBuild.targets" />
-    <file src="tools\AllRules.ruleset" target="tools" />
-    <file src="tools\DefaultSettings.stylecop" target="tools" />
     <file src="$outdir$\BrowningStyle\Wrench.BrowningStyle.dll" target="tools" />
     <file src="$outdir$\BrowningStyle\Wrench.BrowningStyle.pdb" target="tools" />
   </files>
