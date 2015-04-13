@@ -30,8 +30,8 @@ deploy:
   - provider: GitHub
     release: v$(GitVersion_NuGetVersion)
     auth_token:
-      #bsbuild 2014-12-31
-      secure: Rzc/Lpf+X3hUpQhDyqHtELOsVmimpDOEgHkFeCl2KRl0lP5jxwUAftsDMrkmOYyH
+      #bdhess-bot 2015-04-13
+      secure: xbPXf7huVM5TwkHbgC9L1vb5qe/7a5wlMqOrpArzXslYOfiUYTsjDCseoHSmPlhh
     artifact: NuGet,Binaries
     draft: false
     prerelease: false
@@ -41,8 +41,8 @@ deploy:
   - provider: NuGet
     server: https://www.nuget.org
     api_key:
-      #bdhess 2015-01-14
-      secure: +o5S8m7NSWLOFM5hyIhrD+aHdZU2dLn83nCV3zIFV55OMNl5H8q2yRFsFzMMcOWn
+      #bdhess@live.com 2015-04-13
+      secure: 82b5uCCj8Hx3qWNUX4LatNKcSsmvJ+HAkyBBn5wvJUQ0CZjsN4Il4RoTTRSDcFM1
     skip_symbols: true
     artifact: NuGet
     on:
